@@ -7,7 +7,24 @@
     vim
     nixd
     nixfmt
+
+    aria2
+    bun
+    fd
+    ffmpeg
+    figlet
+    gh
+    git-lfs
+    htop
+    nmap
+    tmux
+    tree
+    uv
+    watch
   ];
+
+  # Replaces the hand-written `direnv hook bash` line and pulls in nix-direnv.
+  programs.direnv.enable = true;
 
   nix.settings = {
     # Necessary for using flakes on this system.
@@ -65,27 +82,19 @@
     ];
 
     brews = [
-      "aria2"
       "automake"
       "bison"
       "cloudflared"
       "cmake"
       "cmake-docs"
       "coreutils"
-      "direnv"
       "docker-compose"
-      "fd"
-      "figlet"
-      "gh"
-      "git-lfs"
       "go"
       "grpcurl"
-      "htop"
       "mdv"
       "mole"
       "mpv"
       "ninja"
-      "nmap"
       "node"
       "node@20"
       "ollama"
@@ -96,10 +105,6 @@
       "protobuf"
       "protolint"
       "rustup"
-      "tmux"
-      "tree"
-      "uv"
-      "watch"
       "xcodegen"
       "xray"
     ];
@@ -129,11 +134,6 @@
 
     # Rust
     [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-
-    # direnv
-    if [ -x /opt/homebrew/bin/direnv ]; then
-      eval "$(/opt/homebrew/bin/direnv hook bash)"
-    fi
 
     # ngrok
     if command -v ngrok >/dev/null 2>&1; then
