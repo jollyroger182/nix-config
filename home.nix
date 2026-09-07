@@ -124,8 +124,17 @@
       set incsearch hlsearch
       set scrolloff=5
       set backspace=indent,eol,start
-      vnoremap <leader>y :w !pbcopy<CR><CR>
-      nnoremap <leader>Y :%w !pbcopy<CR><CR>
+      " no X server on macOS, so +xterm_clipboard is dead (W23). mirror yanks
+      " into the pasteboard so plain `y` reaches the system clipboard
+      if executable("pbcopy")
+        augroup PbcopyYank
+          autocmd!
+          autocmd TextYankPost *
+                \ if v:event.operator ==# "y" && v:event.regname ==# "" |
+                \   call system("pbcopy", join(v:event.regcontents, "\n")) |
+                \ endif
+        augroup END
+      endif
       nnoremap <leader>p :r !pbpaste<CR>
       set mouse=a
 
