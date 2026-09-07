@@ -114,7 +114,7 @@
   programs.bash.completion.enable = true;
   programs.bash.interactiveShellInit = ''
     __nix_ps1() { [ -n "$IN_NIX_SHELL" ] && printf '(nix) '; }
-    PS1='$(__nix_ps1)\h:\W \u\$ '
+    PS1='$(__nix_ps1)\[\e[38;5;213m\]\w\[\e[0m\] \[\e[38;5;245m\]❯\[\e[0m\] '
 
     export PYTHONDONTWRITEBYTECODE=1
 
