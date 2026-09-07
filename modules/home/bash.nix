@@ -40,7 +40,20 @@
 
       __nix_ps1() { [ -n "$IN_NIX_SHELL" ] && printf '(nix) '; }
 
-      PS1='$(__nix_ps1)\[\e[38;5;213m\]\w\[\e[0m\] \[\e[38;5;245m\]❯\[\e[0m\] '
+      # NixOS's default prompt, but pink instead of green (still red under root).
+      if [ "$TERM" != "dumb" ] || [ -n "$INSIDE_EMACS" ]; then
+        PROMPT_COLOR="1;31m"
+        ((UID)) && PROMPT_COLOR="1;38;5;213m"
+        if [ -n "$INSIDE_EMACS" ]; then
+          # Emacs term mode doesn't support xterm title escape sequence (\e]0;)
+          PS1="\n\[\033[$PROMPT_COLOR\]\$(__nix_ps1)[\u@\h:\w]\\$\[\033[0m\] "
+        else
+          PS1="\n\[\033[$PROMPT_COLOR\]\$(__nix_ps1)[\[\e]0;\u@\h: \w\a\]\u@\h:\w]\\$\[\033[0m\] "
+        fi
+        if test "$TERM" = "xterm"; then
+          PS1="\[\033]2;\h:\u:\w\007\]$PS1"
+        fi
+      fi
     '';
   };
 }
