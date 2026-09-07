@@ -8,17 +8,20 @@
   };
 
   outputs =
-    inputs@{
+    {
       self,
       nix-darwin,
       nixpkgs,
       home-manager,
     }:
+    let
+      hostName = "Nico";
+    in
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Nico
-      darwinConfigurations."Nico" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
+      darwinConfigurations.${hostName} = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self hostName; };
         modules = [
           ./configuration.nix
           home-manager.darwinModules.home-manager
@@ -26,6 +29,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-bak";
+            home-manager.extraSpecialArgs = { inherit self hostName; };
             home-manager.users.jolly = import ./home.nix;
           }
         ];

@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  self,
+  hostName,
+  ...
+}:
 
 {
   # User-level config. Things that belong to *you* rather than the machine:
@@ -101,45 +106,43 @@
     };
   };
 
-  programs.vim = {
+  programs.neovim = {
     enable = true;
     defaultEditor = true;
-    settings = {
-      number = true;
-      relativenumber = true;
-      expandtab = true;
-      tabstop = 2;
-      shiftwidth = 2;
-      ignorecase = true;
-      smartcase = true;
-      history = 1000;
-      undofile = true;
-      undodir = [ "~/.vim/undo" ];
-    };
-    extraConfig = ''
-      set nocompatible
-      syntax on
-      filetype plugin indent on
+    viAlias = true;
+    vimAlias = true;
 
-      set incsearch hlsearch
+    extraConfig = ''
+      set clipboard=unnamedplus
+      set number relativenumber
+      set expandtab tabstop=2 shiftwidth=2
+      set ignorecase smartcase
       set scrolloff=5
-      set backspace=indent,eol,start
-      " no X server on macOS, so +xterm_clipboard is dead (W23). mirror yanks
-      " into the pasteboard so plain `y` reaches the system clipboard
-      if executable("pbcopy")
-        augroup PbcopyYank
-          autocmd!
-          autocmd TextYankPost *
-                \ if v:event.operator ==# "y" && v:event.regname ==# "" |
-                \   call system("pbcopy", join(v:event.regcontents, "\n")) |
-                \ endif
-        augroup END
-      endif
-      nnoremap <leader>p :r !pbpaste<CR>
+      set undofile
       set mouse=a
 
-      " double-Esc clears search highlight
       nnoremap <Esc><Esc> :nohlsearch<CR>
+    '';
+
+    initLua = ''
+      vim.lsp.config("nixd", {
+        cmd = { "${pkgs.nixd}/bin/nixd" },
+        filetypes = { "nix" },
+        root_markers = { "flake.nix", ".git" },
+        settings = {
+          nixd = {
+            nixpkgs = { expr = "import ${self.inputs.nixpkgs} { }" },
+            formatting = { command = { "${pkgs.nixfmt}/bin/nixfmt" } },
+            options = {
+              ["nix-darwin"] = { expr = "(builtins.getFlake \"${self}\").darwinConfigurations.${hostName}.options" },
+              ["home-manager"] = { expr = "(builtins.getFlake \"${self}\").darwinConfigurations.${hostName}.options.home-manager.users.type.getSubOptions []" }
+            },
+          },
+        },
+      })
+      vim.lsp.enable("nixd")
+
+      vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "LSP format" })
     '';
   };
 }
