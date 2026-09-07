@@ -124,7 +124,9 @@
       set incsearch hlsearch
       set scrolloff=5
       set backspace=indent,eol,start
-      set clipboard=unnamed
+      vnoremap <leader>y :w !pbcopy<CR><CR>
+      nnoremap <leader>Y :%w !pbcopy<CR><CR>
+      nnoremap <leader>p :r !pbpaste<CR>
       set mouse=a
 
       " double-Esc clears search highlight
