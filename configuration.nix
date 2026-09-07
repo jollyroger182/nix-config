@@ -23,10 +23,6 @@
     watch
   ];
 
-  # Replaces the hand-written `direnv hook bash` line and pulls in nix-direnv.
-  programs.direnv.enable = true;
-  programs.direnv.silent = true;
-
   nix.settings = {
     # Necessary for using flakes on this system.
     experimental-features = [
@@ -37,6 +33,17 @@
       "jolly"
     ];
   };
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 7d";
+  };
+  nix.optimise.automatic = true;
+
+  nixpkgs.config.allowUnfree = true;
+
+  # Replaces the hand-written `direnv hook bash` line and pulls in nix-direnv.
+  programs.direnv.enable = true;
+  programs.direnv.silent = true;
 
   system.primaryUser = "jolly";
 
@@ -65,7 +72,7 @@
       # "uninstall" - uninstall undeclared packages
       # "zap" - uninstall and delete data
       # "check" - throw on mismatch
-      cleanup = "check";
+      cleanup = "uninstall";
       autoUpdate = false;
       upgrade = false;
     };
@@ -97,9 +104,7 @@
       "mpv"
       "ninja"
       "node"
-      "node@20"
       "ollama"
-      "openjdk"
       "openjdk@21"
       "podman"
       "postgresql@17"
@@ -130,9 +135,8 @@
     fi
 
     # Language / tool prefixes
-    export N_PREFIX="$HOME/.n"
     export CEDEV="$HOME/CEdev"
-    export PATH="$HOME/.n/bin:$HOME/CEdev/bin:$PATH"
+    export PATH="$HOME/CEdev/bin:$PATH"
     export PATH="$PATH:$HOME/go/bin:$HOME/.yarn/bin:$HOME/.local/bin:$HOME/.bun/bin"
     export PATH="$PATH:/opt/oss-cad-suite/bin:/opt/xpack-riscv-none-elf-gcc-14.2.0-3/bin"
 
