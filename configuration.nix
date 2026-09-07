@@ -5,22 +5,6 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     vim
-    nixd
-    nixfmt
-
-    aria2
-    bun
-    fd
-    ffmpeg
-    figlet
-    gh
-    git-lfs
-    htop
-    nmap
-    tmux
-    tree
-    uv
-    watch
   ];
 
   nix.settings = {

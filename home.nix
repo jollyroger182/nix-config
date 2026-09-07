@@ -1,9 +1,27 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   # User-level config. Things that belong to *you* rather than the machine:
   # prompt, aliases, PATH, per-tool setup.
   home.stateVersion = "26.11";
+
+  home.packages = with pkgs; [
+    nixd
+    nixfmt
+
+    aria2
+    bun
+    fd
+    ffmpeg
+    figlet
+    gh
+    htop
+    nmap
+    tmux
+    tree
+    uv
+    watch
+  ];
 
   programs.direnv = {
     enable = true;
@@ -66,5 +84,16 @@
         eval "$(ngrok completion)"
       fi
     '';
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+
+    settings = {
+      user.name = "jollyroger182";
+      user.email = "hello@jollyy.dev";
+      pull.rebase = true;
+    };
   };
 }
