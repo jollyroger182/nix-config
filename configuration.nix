@@ -25,6 +25,7 @@
 
   # Replaces the hand-written `direnv hook bash` line and pulls in nix-direnv.
   programs.direnv.enable = true;
+  programs.direnv.silent = true;
 
   nix.settings = {
     # Necessary for using flakes on this system.
@@ -112,6 +113,9 @@
 
   programs.bash.completion.enable = true;
   programs.bash.interactiveShellInit = ''
+    __nix_ps1() { [ -n "$IN_NIX_SHELL" ] && printf '(nix) '; }
+    PS1='$(__nix_ps1)\h:\W \u\$ '
+
     export PYTHONDONTWRITEBYTECODE=1
 
     alias py3='python3'
