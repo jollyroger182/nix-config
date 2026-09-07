@@ -10,7 +10,7 @@ let
     hash = "sha256-+f47y/f5mHfplLl9czTH+LJVtbIACzu5lgJJu+5VCQg=";
   };
 
-  contents = pkgs.appimageTools.extractType2 { inherit pname version src; };
+  contents = pkgs.appimageTools.extract { inherit pname version src; };
 
   taut = pkgs.appimageTools.wrapType2 {
     inherit pname version src;
@@ -35,5 +35,5 @@ let
   };
 in
 {
-  environment.systemPackages = [ taut ];
+  home.packages = [ taut ];
 }

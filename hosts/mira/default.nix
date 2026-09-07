@@ -16,7 +16,6 @@
     ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/sudo.nix
     ../../modules/nixos/tailscale.nix
-    ../../modules/nixos/taut.nix
     ../../modules/nixos/user.nix
   ];
 

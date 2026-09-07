@@ -1,5 +1,12 @@
 # home-manager setup
-{ self, hostName, flakeAttr, ... }:
+{
+  pkgs,
+  lib,
+  self,
+  hostName,
+  flakeAttr,
+  ...
+}:
 
 {
   home-manager = {
@@ -14,15 +21,18 @@
 
     extraSpecialArgs = { inherit self hostName flakeAttr; };
 
-    users.jolly.imports = [
-      ./bash.nix
-      ./darwin.nix
-      ./direnv.nix
-      ./git.nix
-      ./linux.nix
-      ./neovim.nix
-      ./packages.nix
-    ];
+    # the platform dirs are imported per-platform, so nothing inside them needs
+    # its own mkIf guard
+    users.jolly.imports =
+      [
+        ./bash.nix
+        ./direnv.nix
+        ./git.nix
+        ./neovim.nix
+        ./packages.nix
+      ]
+      ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin ./darwin
+      ++ lib.optional pkgs.stdenv.hostPlatform.isLinux ./linux;
 
     # home.stateVersion is set per host
   };
