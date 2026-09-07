@@ -39,9 +39,108 @@
   # Enable alternative shell support in nix-darwin.
   # programs.fish.enable = true;
 
-  # macOS defaults, captured from this machine's live state.
-  # Only keys that were actually set are declared; anything omitted stays
-  # unmanaged rather than being silently reset to Apple's default.
+  homebrew = {
+    enable = true;
+
+    onActivation = {
+      # "none" - keep undeclared packages installed
+      # "uninstall" - uninstall undeclared packages
+      # "zap" - uninstall and delete data
+      # "check" - throw on mismatch
+      cleanup = "check";
+      autoUpdate = false;
+      upgrade = false;
+    };
+
+    casks = [
+      "alt-tab"
+      "android-commandlinetools"
+      "android-platform-tools"
+      "anki"
+      "claude-code"
+      "discord"
+      "openscad@snapshot"
+      "raycast"
+      "steamcmd"
+    ];
+
+    brews = [
+      "aria2"
+      "automake"
+      "bison"
+      "cloudflared"
+      "cmake"
+      "cmake-docs"
+      "coreutils"
+      "direnv"
+      "docker-compose"
+      "fd"
+      "figlet"
+      "gh"
+      "git-lfs"
+      "go"
+      "grpcurl"
+      "htop"
+      "mdv"
+      "mole"
+      "mpv"
+      "ninja"
+      "nmap"
+      "node"
+      "node@20"
+      "ollama"
+      "openjdk"
+      "openjdk@21"
+      "podman"
+      "postgresql@17"
+      "protobuf"
+      "protolint"
+      "rustup"
+      "tmux"
+      "tree"
+      "uv"
+      "watch"
+      "xcodegen"
+      "xray"
+    ];
+  };
+
+  programs.bash.completion.enable = true;
+  programs.bash.interactiveShellInit = ''
+    export PYTHONDONTWRITEBYTECODE=1
+
+    alias py3='python3'
+    alias ptest='source ~/.venvs/test/bin/activate'
+    alias rmquarantine='xattr -rd com.apple.quarantine'
+    alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+
+    # Homebrew
+    if [ -x /opt/homebrew/bin/brew ]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+    fi
+
+    # Language / tool prefixes
+    export N_PREFIX="$HOME/.n"
+    export CEDEV="$HOME/CEdev"
+    export PATH="$HOME/.n/bin:$HOME/CEdev/bin:$PATH"
+    export PATH="$PATH:$HOME/go/bin:$HOME/.yarn/bin:$HOME/.local/bin:$HOME/.bun/bin"
+    export PATH="$PATH:/opt/oss-cad-suite/bin:/opt/xpack-riscv-none-elf-gcc-14.2.0-3/bin"
+
+    # Rust
+    [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+    # direnv
+    if [ -x /opt/homebrew/bin/direnv ]; then
+      eval "$(/opt/homebrew/bin/direnv hook bash)"
+    fi
+
+    # ngrok
+    if command -v ngrok >/dev/null 2>&1; then
+      eval "$(ngrok completion)"
+    fi
+  '';
+
   system.defaults = {
     NSGlobalDomain = {
       AppleShowAllExtensions = true;
