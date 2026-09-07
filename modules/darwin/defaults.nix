@@ -1,101 +1,7 @@
-{ pkgs, self, ... }:
+# macos system preferences
+{ ... }:
 
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
-
-  nix.settings = {
-    # Necessary for using flakes on this system.
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    trusted-users = [
-      "jolly"
-    ];
-  };
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 7d";
-  };
-  nix.optimise.automatic = true;
-
-  nixpkgs.config.allowUnfree = true;
-
-  system.primaryUser = "jolly";
-
-  users.knownUsers = [ "jolly" ];
-
-  users.users.jolly = {
-    uid = 501;
-    name = "jolly";
-    description = "Jolly";
-    home = "/Users/jolly";
-    shell = pkgs.bashInteractive;
-    isHidden = false;
-  };
-
-  # Add the Nix bash to /etc/shells so it is a permitted login shell.
-  environment.shells = [ pkgs.bashInteractive ];
-
-  # Enable alternative shell support in nix-darwin.
-  # programs.fish.enable = true;
-
-  homebrew = {
-    enable = true;
-
-    onActivation = {
-      # "none" - keep undeclared packages installed
-      # "uninstall" - uninstall undeclared packages
-      # "zap" - uninstall and delete data
-      # "check" - throw on mismatch
-      cleanup = "uninstall";
-      autoUpdate = false;
-      upgrade = false;
-    };
-
-    casks = [
-      "alt-tab"
-      "android-commandlinetools"
-      "android-platform-tools"
-      "anki"
-      "claude-code"
-      "discord"
-      "openscad@snapshot"
-      "raycast"
-      "steamcmd"
-    ];
-
-    brews = [
-      "automake"
-      "bison"
-      "cloudflared"
-      "cmake"
-      "cmake-docs"
-      "coreutils"
-      "docker-compose"
-      "go"
-      "grpcurl"
-      "mdv"
-      "mole"
-      "mpv"
-      "ninja"
-      "node"
-      "ollama"
-      "openjdk@21"
-      "podman"
-      "postgresql@17"
-      "protobuf"
-      "protolint"
-      "rustup"
-      "xcodegen"
-      "xray"
-    ];
-  };
-
   system.defaults = {
     NSGlobalDomain = {
       AppleShowAllExtensions = true;
@@ -121,8 +27,7 @@
       tilesize = 64;
 
       # Hot corners: 2 = Mission Control, 10 = Put Display to Sleep,
-      # 11 = Launchpad. The top-right corner is unset on this machine,
-      # so it is left unmanaged.
+      # 11 = Launchpad.
       wvous-tl-corner = 2;
       wvous-bl-corner = 11;
       wvous-br-corner = 10;
@@ -214,14 +119,4 @@
       StageManagerHideWidgets = false;
     };
   };
-
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 6;
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
 }

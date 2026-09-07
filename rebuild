@@ -1,0 +1,13 @@
+#!/bin/sh
+# Pull and switch, on whichever machine this is run from.
+set -e
+
+cd "$(dirname "$0")"
+
+git pull
+
+case "$(uname -s)" in
+  Darwin) sudo darwin-rebuild switch --flake '.#Nico' ;;
+  Linux)  sudo nixos-rebuild switch --flake '.#mira' ;;
+  *)      echo "rebuild: unsupported platform $(uname -s)" >&2; exit 1 ;;
+esac
