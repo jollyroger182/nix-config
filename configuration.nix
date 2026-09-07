@@ -118,6 +118,17 @@
 
   programs.bash.completion.enable = true;
   programs.bash.interactiveShellInit = ''
+    __prompt_eol() {
+      local w=$COLUMNS
+      [ -n "$w" ] || w=80
+      printf '\033[7m%%\033[0m%*s\r' "$(( w - 1 ))" ""
+    }
+    if [[ "$(declare -p PROMPT_COMMAND 2>&1)" == "declare -a"* ]]; then
+      PROMPT_COMMAND+=(__prompt_eol)
+    else
+      PROMPT_COMMAND="$PROMPT_COMMAND"$'\n'"__prompt_eol"
+    fi
+
     __nix_ps1() { [ -n "$IN_NIX_SHELL" ] && printf '(nix) '; }
     PS1='$(__nix_ps1)\[\e[38;5;213m\]\w\[\e[0m\] \[\e[38;5;245m\]❯\[\e[0m\] '
 
