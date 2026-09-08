@@ -22,6 +22,7 @@
     nmap
     protobuf
     protolint
+    ripgrep
     tmux
     tree
     uv
