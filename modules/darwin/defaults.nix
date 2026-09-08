@@ -51,9 +51,20 @@
       ];
 
       persistent-others = [
-        { folder = "/Users/jolly/Downloads"; }
-        { folder = "/Users/jolly/Downloads/HC Memes"; }
-        { folder = "/Users/jolly/Downloads/HC PFPs"; }
+        {
+          folder = {
+            arrangement = "date-added";
+            path = "/Users/jolly/Downloads";
+            showas = "fan";
+          };
+        }
+        {
+          folder = {
+            arrangement = "date-added";
+            path = "/Users/jolly/Downloads/HC Memes";
+            showas = "fan";
+          };
+        }
       ];
     };
 
