@@ -5,6 +5,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ../../modules/shared/fonts.nix
     ../../modules/shared/nix.nix
     ../../modules/shared/packages.nix
     ../../modules/home
