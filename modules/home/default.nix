@@ -23,16 +23,16 @@
 
     # the platform dirs are imported per-platform, so nothing inside them needs
     # its own mkIf guard
-    users.jolly.imports =
-      [
-        ./bash.nix
-        ./direnv.nix
-        ./git.nix
-        ./neovim.nix
-        ./packages.nix
-      ]
-      ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin ./darwin
-      ++ lib.optional pkgs.stdenv.hostPlatform.isLinux ./linux;
+    users.jolly.imports = [
+      ./bash.nix
+      ./direnv.nix
+      ./fonts.nix
+      ./git.nix
+      ./neovim.nix
+      ./packages.nix
+    ]
+    ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin ./darwin
+    ++ lib.optional pkgs.stdenv.hostPlatform.isLinux ./linux;
 
     # home.stateVersion is set per host
   };
