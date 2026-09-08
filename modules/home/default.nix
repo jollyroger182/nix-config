@@ -5,6 +5,7 @@
   self,
   hostName,
   flakeAttr,
+  nix-nvim,
   ...
 }:
 
@@ -19,7 +20,14 @@
     # rename existing dotfile instead of bail
     backupFileExtension = "hm-bak";
 
-    extraSpecialArgs = { inherit self hostName flakeAttr; };
+    extraSpecialArgs = {
+      inherit
+        self
+        hostName
+        flakeAttr
+        nix-nvim
+        ;
+    };
 
     # the platform dirs are imported per-platform, so nothing inside them needs
     # its own mkIf guard

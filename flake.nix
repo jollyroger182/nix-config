@@ -2,9 +2,7 @@
   description = "Nix configuration for my machines";
 
   inputs = {
-    # Both machines track one nixpkgs. nixos-unstable is nixpkgs-unstable gated
-    # on NixOS's release-critical tests passing, which is worth having on mira
-    # and harmless on Nico.
+    # nixos-unstable = nixpkgs-unstable + nixos testing
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-darwin = {
@@ -16,6 +14,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-nvim = {
+      url = "github:jollyroger182/nix.nvim";
+    };
   };
 
   outputs =
@@ -24,13 +26,12 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      nix-nvim,
       ...
     }:
     let
-      # hostName and flakeAttr let a module work out which configuration it is
-      # being evaluated as part of, which modules/home/neovim.nix needs to
-      # point nixd at the right option tree.
       specialArgs = hostName: flakeAttr: { inherit self hostName flakeAttr; };
+      modules = [ { nixpkgs.overlays = [ nix-nvim.overlays.default ]; } ];
     in
     {
       # sudo nixos-rebuild switch --flake .#mira
@@ -39,16 +40,18 @@
         modules = [
           ./hosts/mira
           home-manager.nixosModules.home-manager
-        ];
+        ]
+        ++ modules;
       };
 
-      # darwin-rebuild switch --flake .#Nico
+      # sudo darwin-rebuild switch --flake .#Nico
       darwinConfigurations.Nico = nix-darwin.lib.darwinSystem {
         specialArgs = specialArgs "Nico" "darwinConfigurations";
         modules = [
           ./hosts/nico
           home-manager.darwinModules.home-manager
-        ];
+        ]
+        ++ modules;
       };
     };
 }
