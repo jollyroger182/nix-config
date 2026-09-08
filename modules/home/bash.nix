@@ -5,6 +5,7 @@
   home.sessionVariables = {
     PYTHONDONTWRITEBYTECODE = 1;
     CEDEV = "$HOME/CEdev";
+    NIX_SHELL_PRESERVE_PROMPT = 1;
   };
 
   programs.bash = {
@@ -12,6 +13,8 @@
     enableCompletion = true;
 
     shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
       py3 = "python3";
       ptest = "source ~/.venvs/test/bin/activate";
     };

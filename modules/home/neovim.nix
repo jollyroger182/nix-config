@@ -4,5 +4,8 @@
 {
   home.packages = [
     pkgs.nvim-pkg
+    pkgs.nvim-vscode
   ];
+
+  home.sessionVariables.EDITOR = "nvim";
 }
