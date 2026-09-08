@@ -185,11 +185,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1788842669,
-        "narHash": "sha256-XGp7d7wAmwC0I5Y341sIGcqwse9LdQNbiO24GF2nFCU=",
+        "lastModified": 1788846159,
+        "narHash": "sha256-ym1UU24x0yPHlVD+qVmJQINPk6l+VFlo3rezDCYhpV8=",
         "owner": "jollyroger182",
         "repo": "nix.nvim",
-        "rev": "f8854d0c132acc959f4d45725ec60b7da3c40017",
+        "rev": "71b78716d5b119068c52527c2761418b7981e1c6",
         "type": "github"
       },
       "original": {
