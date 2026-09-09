@@ -7,18 +7,12 @@
     nixfmt
 
     aria2
-    automake
-    bison
-    bun
     cloudflared
     cmakeCurses
     docker-compose
-    fd
     ffmpeg
-    figlet
-    grpcurl
     htop
-    ninja
+    mpv
     nmap
     protobuf
     protolint
@@ -26,4 +20,11 @@
     tmux
     tree
   ];
+
+  programs.claude-code.enable = true;
+
+  programs.bun = {
+    enable = true;
+    enableGitIntegration = true;
+  };
 }

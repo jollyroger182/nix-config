@@ -3,10 +3,11 @@
 
 {
   home.packages = with pkgs; [
+    xcodegen
+
     # linux gets these from the base system
     watch
     coreutils-prefixed
-    xcodegen
 
     # expose coreutils commands with no bsd-equivalent unprefixed
     (runCommand "coreutils-gnu-only" { } ''

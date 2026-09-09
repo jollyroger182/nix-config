@@ -19,7 +19,6 @@
       "android-commandlinetools"
       "android-platform-tools"
       "anki"
-      "claude-code"
       "discord"
       "docker-desktop"
       "openscad@snapshot"
@@ -28,16 +27,8 @@
     ];
 
     brews = [
-      "go"
-      "mdv"
-      "mole"
-      "mpv"
-      "node"
-      "ollama"
       "openjdk@21"
-      "podman"
       "postgresql@17"
-      "rustup"
       "xray"
     ];
   };
