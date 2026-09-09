@@ -18,7 +18,6 @@
       "alt-tab"
       "android-commandlinetools"
       "android-platform-tools"
-      "anki"
       "discord"
       "docker-desktop"
       "openscad@snapshot"
@@ -29,7 +28,6 @@
     brews = [
       "openjdk@21"
       "postgresql@17"
-      "xray"
     ];
   };
 }
