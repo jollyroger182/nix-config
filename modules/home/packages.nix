@@ -25,6 +25,5 @@
     ripgrep
     tmux
     tree
-    uv
   ];
 }

@@ -38,6 +38,7 @@
       ./git.nix
       ./neovim.nix
       ./packages.nix
+      ./python.nix
     ]
     ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin ./darwin
     ++ lib.optional pkgs.stdenv.hostPlatform.isLinux ./linux;
