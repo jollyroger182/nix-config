@@ -58,13 +58,6 @@
             showas = "fan";
           };
         }
-        {
-          folder = {
-            arrangement = "date-added";
-            path = "/Users/jolly/Downloads/HC Memes";
-            showas = "fan";
-          };
-        }
       ];
     };
 
