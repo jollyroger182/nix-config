@@ -9,7 +9,7 @@
       # "uninstall" - uninstall undeclared packages
       # "zap" - uninstall and delete data
       # "check" - throw on mismatch
-      cleanup = "none";
+      cleanup = "uninstall";
       autoUpdate = false;
       upgrade = false;
     };
@@ -18,6 +18,7 @@
       "alt-tab"
       "android-commandlinetools"
       "android-platform-tools"
+      "anki"
       "discord"
       "docker-desktop"
       "openscad@snapshot"
