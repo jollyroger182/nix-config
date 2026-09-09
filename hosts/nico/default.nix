@@ -4,6 +4,7 @@
 {
   imports = [
     ../../modules/shared/nix.nix
+    ../../modules/shared/overlays.nix
     ../../modules/shared/packages.nix
     ../../modules/shared/postgres.nix
     ../../modules/shared/ssh.nix

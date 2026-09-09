@@ -6,7 +6,7 @@
     nixd
     nixfmt
 
-    # anki
+    anki
     aria2
     cloudflared
     cmakeCurses
