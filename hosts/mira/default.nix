@@ -7,6 +7,7 @@
 
     ../../modules/shared/nix.nix
     ../../modules/shared/packages.nix
+    ../../modules/shared/ssh.nix
     ../../modules/home
 
     ../../modules/nixos/boot.nix
