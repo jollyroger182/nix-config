@@ -9,7 +9,7 @@
       # "uninstall" - uninstall undeclared packages
       # "zap" - uninstall and delete data
       # "check" - throw on mismatch
-      cleanup = "uninstall";
+      cleanup = "none";
       autoUpdate = false;
       upgrade = false;
     };
@@ -27,7 +27,6 @@
 
     brews = [
       "openjdk@21"
-      "postgresql@17"
     ];
   };
 }

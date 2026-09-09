@@ -5,6 +5,7 @@
   imports = [
     ../../modules/shared/nix.nix
     ../../modules/shared/packages.nix
+    ../../modules/shared/postgres.nix
     ../../modules/shared/ssh.nix
     ../../modules/home
 
