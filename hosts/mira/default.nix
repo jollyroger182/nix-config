@@ -13,6 +13,7 @@
     ../../modules/home
 
     ../../modules/nixos/boot.nix
+    ../../modules/nixos/cube-direct.nix
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/locale.nix
     ../../modules/nixos/networkmanager.nix
