@@ -3,5 +3,8 @@
 
 {
   # support clipboard on nvim
-  home.packages = [ pkgs.wl-clipboard ];
+  home.packages = with pkgs; [
+    icu
+    wl-clipboard
+  ];
 }
