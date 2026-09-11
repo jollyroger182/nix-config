@@ -4,7 +4,7 @@
 {
   # support clipboard on nvim
   home.packages = with pkgs; [
-    icu
+    (olympus.override { celesteWrapper = "steam-run"; })
     wl-clipboard
   ];
 }
