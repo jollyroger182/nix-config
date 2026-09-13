@@ -4,6 +4,9 @@
 {
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # gnome "Launch using Discrete Graphics Card"
+  services.switcherooControl.enable = true;
+
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
