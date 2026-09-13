@@ -18,8 +18,9 @@
 
     # every name here must exist as a top-level key in secrets/tokens.yaml
     secrets = {
+      slack-xoxb = { };
       slack-xoxp = { };
-      github-pat = { };
+      github = { };
     };
   };
 
