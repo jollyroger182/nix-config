@@ -18,6 +18,7 @@
     ../../modules/nixos/locale.nix
     ../../modules/nixos/networkmanager.nix
     ../../modules/nixos/nix-ld.nix
+    ../../modules/nixos/nvidia.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/sudo.nix
     ../../modules/nixos/tailscale.nix
