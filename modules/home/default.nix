@@ -6,6 +6,7 @@
   hostName,
   flakeAttr,
   nix-nvim,
+  sops-nix,
   ...
 }:
 
@@ -26,6 +27,7 @@
         hostName
         flakeAttr
         nix-nvim
+        sops-nix
         ;
     };
 
@@ -39,6 +41,7 @@
       ./neovim.nix
       ./packages.nix
       ./python.nix
+      ./sops.nix
     ]
     ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin ./darwin
     ++ lib.optional pkgs.stdenv.hostPlatform.isLinux ./linux;

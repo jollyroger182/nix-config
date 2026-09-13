@@ -1,0 +1,17 @@
+# Who can decrypt what.
+#
+# Recipients are age keys derived (via ssh-to-age) from the per-machine user SSH
+# keys already listed in modules/shared/ssh.nix, so there is no separate key to
+# bootstrap: a machine that can SSH can also decrypt. To add a machine, generate
+# its SSH key, add the pubkey to ssh.nix and its age form here, then rekey with
+#   sops updatekeys secrets/tokens.yaml
+keys:
+  - &nico age1nnq50h2h0k89qn8uc236f7er4xyg785hlr7e0x0gc7ys0qs934cs7fn630
+  - &mira age19tq2t8npuwlrk2qxajfeag2nxgrjwn6hzdra6k67q625gefwmgns3w0g2p
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *nico
+          - *mira

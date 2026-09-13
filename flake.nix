@@ -18,6 +18,11 @@
     nix-nvim = {
       url = "github:jollyroger182/nix.nvim";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,10 +32,19 @@
       nix-darwin,
       home-manager,
       nix-nvim,
+      sops-nix,
       ...
     }:
     let
-      specialArgs = hostName: flakeAttr: { inherit self hostName flakeAttr; };
+      specialArgs = hostName: flakeAttr: {
+        inherit
+          self
+          hostName
+          flakeAttr
+          nix-nvim
+          sops-nix
+          ;
+      };
       modules = [ { nixpkgs.overlays = [ nix-nvim.overlays.default ]; } ];
     in
     {
