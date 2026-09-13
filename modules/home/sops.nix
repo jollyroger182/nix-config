@@ -25,6 +25,8 @@
 
   # `secret slack-xoxp` prints one token
   programs.bash.initExtra = ''
+    export SOPS_AGE_KEY_CMD="${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i ${config.home.homeDirectory}/.ssh/id_ed25519"
+
     secret() {
       local dir=${config.sops.defaultSymlinkPath}
       if [ $# -ne 1 ] || [ ! -f "$dir/$1" ]; then
