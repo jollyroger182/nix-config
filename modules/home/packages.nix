@@ -12,7 +12,6 @@
     docker-compose
     ffmpeg
     htop
-    mpv
     nmap
     protobuf
     protolint

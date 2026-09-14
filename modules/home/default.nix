@@ -38,6 +38,7 @@
       ./direnv.nix
       ./fonts.nix
       ./git.nix
+      ./mpv.nix
       ./neovim.nix
       ./packages.nix
       ./python.nix
