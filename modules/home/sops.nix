@@ -23,6 +23,7 @@
       github = { };
       lastfm-key = { };
       lastfm-secret = { };
+      lastfm-password = { };
     };
   };
 
