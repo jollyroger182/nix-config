@@ -24,6 +24,8 @@
       "openscad@snapshot"
       "raycast"
       "steamcmd"
+
+      "nikitabobko/tap/aerospace"
     ];
 
     brews = [
