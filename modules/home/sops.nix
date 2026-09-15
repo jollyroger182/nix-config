@@ -21,6 +21,7 @@
       slack-xoxb = { };
       slack-xoxp = { };
       github = { };
+      lastfm = { };
     };
   };
 
