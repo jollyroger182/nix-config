@@ -2,10 +2,24 @@
 { lib, ... }:
 
 {
+  # bsd ls/grep are colorless by default; nixos already does this on linux
+  home.sessionVariables = {
+    CLICOLOR = 1;
+
+    # fg/bg pair per type, in order: dir, symlink, socket, pipe, exec, block,
+    # char, setuid exec, setgid exec, sticky other-writable dir, other-writable
+    # dir. lowercase = normal, uppercase = bold, x = terminal default.
+    LSCOLORS = "ExGxFxdxCxDxDxhbadacad";
+  };
+
   programs.bash = {
     shellAliases = {
       rmquarantine = "xattr -rd com.apple.quarantine";
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
+
+      grep = "grep --color=auto";
+      egrep = "egrep --color=auto";
+      fgrep = "fgrep --color=auto";
     };
 
     # have nix win over homebrew (`brew shellenv` prepends to PATH)
