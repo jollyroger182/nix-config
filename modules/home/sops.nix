@@ -22,6 +22,7 @@
       slack-xoxp = { };
       github = { };
       lastfm-key = { };
+      lastfm-secret = { };
       lastfm-sk = { };
     };
   };
