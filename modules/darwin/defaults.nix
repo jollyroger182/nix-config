@@ -36,16 +36,16 @@
         { app = "/System/Applications/Apps.app"; }
         { app = "/Applications/Zen.app"; }
         { app = "/System/Applications/Mail.app"; }
-        { app = "/System/Applications/Photos.app"; }
         { app = "/System/Applications/Calendar.app"; }
         { app = "/System/Applications/Reminders.app"; }
         { app = "/Applications/WeChat.app"; }
         { app = "/Applications/Taut.app"; }
+        { app = "/Users/jolly/Applications/Airtable.app"; }
+        { app = "/Users/jolly/Applications/Trello.app"; }
+        { app = "/Users/jolly/Applications/Fillout.app"; }
         { app = "/Applications/Visual Studio Code.app"; }
-        { app = "/Applications/Xcode.app"; }
         { app = "/System/Applications/Utilities/Terminal.app"; }
         { app = "/System/Applications/Utilities/Activity Monitor.app"; }
-        { app = "/Applications/Notability.app"; }
         { app = "/System/Applications/Shortcuts.app"; }
         { app = "/System/Applications/System Settings.app"; }
       ];

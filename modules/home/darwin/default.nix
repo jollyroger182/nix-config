@@ -6,5 +6,6 @@
     ./bash.nix
     ./packages.nix
     ./sync-tokens.nix
+    ./webapps.nix
   ];
 }
