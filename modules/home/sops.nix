@@ -24,6 +24,7 @@
       lastfm-key = { };
       lastfm-secret = { };
       lastfm-sk = { };
+      cdn = { };
     };
   };
 
