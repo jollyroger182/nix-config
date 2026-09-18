@@ -12,6 +12,7 @@
 
     ../../modules/darwin/defaults.nix
     ../../modules/darwin/homebrew.nix
+    ../../modules/darwin/mas.nix
     ../../modules/darwin/user.nix
   ];
 
