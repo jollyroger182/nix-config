@@ -91,26 +91,6 @@ let
     };
 
   apps = {
-    Airtable = mkWebApp {
-      name = "Airtable";
-      uuid = "0882A7A3-D726-495A-8538-5AC76AA6827D";
-      url = "https://airtable.com/#";
-      icon = ./webapps/airtable.icns;
-      manifestURL = "https://airtable.com/images/favicon/baymax/manifest.json";
-      manifest = {
-        name = "Airtable";
-        display = "standalone";
-        theme_color = "#ffffff";
-        icons = [
-          {
-            sizes = "192x192";
-            src = "/images/favicon/baymax/android-chrome-192x192.png";
-            type = "image/png";
-          }
-        ];
-      };
-    };
-
     Trello = mkWebApp {
       name = "Trello";
       uuid = "391C012C-9D80-469D-96A7-55DD73EDB8A6";

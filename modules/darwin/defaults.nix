@@ -40,7 +40,7 @@
         { app = "/System/Applications/Reminders.app"; }
         { app = "/Applications/WeChat.app"; }
         { app = "/Applications/Taut.app"; }
-        { app = "/Users/jolly/Applications/Airtable.app"; }
+        { app = "/Applications/Airtable.app"; }
         { app = "/Users/jolly/Applications/Trello.app"; }
         { app = "/Users/jolly/Applications/Fillout.app"; }
         { app = "/Applications/Visual Studio Code.app"; }

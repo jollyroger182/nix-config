@@ -15,6 +15,7 @@
     };
 
     casks = [
+      "airtable"
       "alt-tab"
       "android-commandlinetools"
       "android-platform-tools"
