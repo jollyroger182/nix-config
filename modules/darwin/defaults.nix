@@ -41,7 +41,7 @@
         { app = "/Applications/WeChat.app"; }
         { app = "/Applications/Taut.app"; }
         { app = "/Applications/Airtable.app"; }
-        { app = "/Users/jolly/Applications/Trello.app"; }
+        { app = "/Applications/Trello.app"; }
         { app = "/Users/jolly/Applications/Fillout.app"; }
         { app = "/Applications/Visual Studio Code.app"; }
         { app = "/System/Applications/Utilities/Terminal.app"; }

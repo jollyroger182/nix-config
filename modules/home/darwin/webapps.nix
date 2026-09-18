@@ -91,17 +91,6 @@ let
     };
 
   apps = {
-    Trello = mkWebApp {
-      name = "Trello";
-      uuid = "391C012C-9D80-469D-96A7-55DD73EDB8A6";
-      url = "https://trello.com/b/1NBUSolt/ysws-haven";
-      icon = ./webapps/trello.icns;
-      manifest = {
-        name = "YSWS - Haven | Trello";
-        short_name = "Trello";
-      };
-    };
-
     Fillout = mkWebApp {
       name = "Fillout";
       uuid = "EF291FA1-AAFD-45E1-BA0E-C9E98391583C";
