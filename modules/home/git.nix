@@ -19,7 +19,6 @@
       "tmp_*"
       ".DS_Store"
       ".direnv/*"
-      ".claude/*"
     ];
   };
 
