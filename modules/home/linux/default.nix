@@ -5,6 +5,5 @@
   imports = [
     ./apps.nix
     ./packages.nix
-    ./taut.nix
   ];
 }

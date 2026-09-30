@@ -19,6 +19,11 @@
       url = "github:jollyroger182/nix.nvim";
     };
 
+    taut = {
+      url = "github:jeremy46231/taut";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +37,7 @@
       nix-darwin,
       home-manager,
       nix-nvim,
+      taut,
       sops-nix,
       ...
     }:
@@ -45,7 +51,14 @@
           sops-nix
           ;
       };
-      modules = [ { nixpkgs.overlays = [ nix-nvim.overlays.default ]; } ];
+      modules = [
+        {
+          nixpkgs.overlays = [
+            nix-nvim.overlays.default
+            taut.overlays.default
+          ];
+        }
+      ];
     in
     {
       # sudo nixos-rebuild switch --flake .#mira
