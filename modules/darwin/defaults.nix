@@ -28,7 +28,7 @@
 
       # Hot corners: 2 = Mission Control, 10 = Put Display to Sleep,
       # 11 = Launchpad.
-      wvous-tl-corner = 2;
+      #wvous-tl-corner = 2;
       wvous-bl-corner = 11;
       wvous-br-corner = 10;
 

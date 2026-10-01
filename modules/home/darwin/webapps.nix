@@ -94,12 +94,12 @@ let
     Fillout = mkWebApp {
       name = "Fillout";
       uuid = "EF291FA1-AAFD-45E1-BA0E-C9E98391583C";
-      url = "https://build.fillout.com/home";
+      url = "https://app.zite.com/home";
       icon = ./webapps/fillout.icns;
       iconKind = "Favicon";
       manifest = {
         name = "Zite | Home";
-        short_name = "Fillout";
+        short_name = "Zite";
       };
     };
   };
