@@ -30,6 +30,7 @@
     ];
 
     brews = [
+      "cloudflared"
       "openjdk@21"
     ];
   };

@@ -7,7 +7,6 @@
     nixfmt
 
     aria2
-    cloudflared
     cmakeCurses
     docker-compose
     ffmpeg
