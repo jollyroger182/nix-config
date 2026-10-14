@@ -25,14 +25,17 @@
     enable = true;
     enableGitIntegration = true;
 
-    # bun's bash completion matches against the never-defined
-    # $re_comp_word_script; macOS regcomp rejects the empty regex and prints
-    # "invalid regular expression" on every tab
+    # fix up bun's bash completion:
+    # - it matches against the never-defined $re_comp_word_script; macOS
+    #   regcomp rejects the empty regex and prints "invalid regular
+    #   expression" on every tab
+    # - it never completes files for `bun ` and barely for `bun run `
     package = pkgs.bun.overrideAttrs (old: {
       postPatchelf = old.postPatchelf + ''
         substituteInPlace $out/share/bash-completion/completions/bun.bash \
           --replace-fail '( "''${COMPREPLY[*]}" =~ ''${re_comp_word_script} )' \
                          '( -n "''${re_comp_word_script}" && "''${COMPREPLY[*]}" =~ ''${re_comp_word_script} )'
+        cat ${./bun-completion.bash} >> $out/share/bash-completion/completions/bun.bash
       '';
     });
   };
