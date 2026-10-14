@@ -18,17 +18,18 @@
       AppleMeasurementUnits = "Centimeters";
       AppleMetricUnits = 1;
       AppleTemperatureUnit = "Celsius";
+
+      "com.apple.trackpad.scaling" = 0.875;
     };
 
     dock = {
       autohide = true;
       expose-group-apps = true;
       mineffect = "genie";
-      tilesize = 64;
+      tilesize = 60;
 
       # Hot corners: 2 = Mission Control, 10 = Put Display to Sleep,
       # 11 = Launchpad.
-      #wvous-tl-corner = 2;
       wvous-bl-corner = 11;
       wvous-br-corner = 10;
 
