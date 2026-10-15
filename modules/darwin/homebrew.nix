@@ -22,6 +22,7 @@
       "anki"
       "discord"
       "docker-desktop"
+      "itch"
       "openscad@snapshot"
       "raycast"
       "steamcmd"
