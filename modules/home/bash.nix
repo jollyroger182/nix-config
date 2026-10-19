@@ -1,6 +1,15 @@
 # common shell config; platform-specific things go in ./{darwin,linux}.nix
-{ ... }:
+{ hostName, ... }:
 
+let
+  # prompt color per host
+  promptColors = {
+    Nico = "1;38;5;213m"; # pink
+    mira = "1;38;5;141m"; # purple
+    orac = "1;38;5;214m"; # orange
+  };
+  userColor = promptColors.${hostName} or "1;38;5;213m";
+in
 {
   home.sessionVariables = {
     PYTHONDONTWRITEBYTECODE = 1;
@@ -46,7 +55,7 @@
       # leading space to cover up the % mark when on new line
       if [ "$TERM" != "dumb" ] || [ -n "$INSIDE_EMACS" ]; then
         PROMPT_COLOR="1;31m"
-        ((UID)) && PROMPT_COLOR="1;38;5;213m"
+        ((UID)) && PROMPT_COLOR="${userColor}"
         if [ -n "$INSIDE_EMACS" ]; then
           PS1=" \n\$(__nix_ps1)\[\033[$PROMPT_COLOR\][\u@\h:\w]\\$\[\033[0m\] "
         else
