@@ -1,5 +1,6 @@
 #!/bin/sh
 # Pull and switch, on whichever machine this is run from.
+# NixOS hosts are named after their flake attribute (mira, orac).
 set -e
 
 cd "$(dirname "$0")"
@@ -8,6 +9,6 @@ git pull
 
 case "$(uname -s)" in
   Darwin) sudo darwin-rebuild switch --flake '.#Nico' ;;
-  Linux)  sudo nixos-rebuild switch --flake '.#mira' ;;
+  Linux)  sudo nixos-rebuild switch --flake ".#$(hostname)" ;;
   *)      echo "rebuild: unsupported platform $(uname -s)" >&2; exit 1 ;;
 esac

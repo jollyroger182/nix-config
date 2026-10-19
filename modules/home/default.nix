@@ -10,6 +10,9 @@
   ...
 }:
 
+let
+  headless = builtins.elem hostName [ "orac" ];
+in
 {
   home-manager = {
     # use the system's nixpkgs
@@ -32,20 +35,23 @@
     };
 
     # the platform dirs are imported per-platform, so nothing inside them needs
-    # its own mkIf guard
+    # its own mkIf guard. headless hosts skip the desktop bits (fonts, mpv, gui
+    # apps) and sops, so a server never holds the personal tokens.
     users.jolly.imports = [
       ./bash.nix
       ./direnv.nix
-      ./fonts.nix
       ./git.nix
-      ./mpv.nix
       ./neovim.nix
       ./packages.nix
       ./python.nix
+    ]
+    ++ lib.optionals (!headless) [
+      ./fonts.nix
+      ./mpv.nix
       ./sops.nix
     ]
     ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin ./darwin
-    ++ lib.optional pkgs.stdenv.hostPlatform.isLinux ./linux;
+    ++ lib.optional (pkgs.stdenv.hostPlatform.isLinux && !headless) ./linux;
 
     # home.stateVersion is set per host
   };

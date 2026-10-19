@@ -71,6 +71,16 @@
         ++ modules;
       };
 
+      # sudo nixos-rebuild switch --flake .#orac
+      nixosConfigurations.orac = nixpkgs.lib.nixosSystem {
+        specialArgs = specialArgs "orac" "nixosConfigurations";
+        modules = [
+          ./hosts/orac
+          home-manager.nixosModules.home-manager
+        ]
+        ++ modules;
+      };
+
       # sudo darwin-rebuild switch --flake .#Nico
       darwinConfigurations.Nico = nix-darwin.lib.darwinSystem {
         specialArgs = specialArgs "Nico" "darwinConfigurations";
