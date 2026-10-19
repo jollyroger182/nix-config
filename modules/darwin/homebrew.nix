@@ -15,6 +15,7 @@
     };
 
     casks = [
+      "affinity"
       "airtable"
       "alt-tab"
       "android-commandlinetools"
