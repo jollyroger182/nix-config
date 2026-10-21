@@ -102,6 +102,16 @@ let
         short_name = "Zite";
       };
     };
+    Hackban = mkWebApp {
+      name = "Hackban";
+      uuid = "73D03A08-ADE5-4D32-B90B-889980DD6C7B";
+      url = "https://hackban.hackclub.com/b/cmvh14m3e000ioj0zsczrws4v";
+      icon = ./webapps/hackban.icns;
+      manifest = {
+        name = "YSWS - Haven | Hackban";
+        short_name = "Hackban";
+      };
+    };
   };
   # launch services keeps one record per web app in a data vault, keyed by uuid,
   # and refuses to launch a bundle whose signature does not match the recorded
