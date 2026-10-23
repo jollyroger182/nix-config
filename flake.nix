@@ -17,6 +17,7 @@
 
     nix-nvim = {
       url = "github:jollyroger182/nix.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     taut = {

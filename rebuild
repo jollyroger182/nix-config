@@ -5,7 +5,7 @@ set -e
 
 cd "$(dirname "$0")"
 
-git pull
+git pull || echo "rebuild: skipping git pull"
 
 case "$(uname -s)" in
   Darwin) sudo darwin-rebuild switch --flake '.#Nico' ;;

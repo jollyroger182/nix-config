@@ -43,5 +43,8 @@
   programs.npm = {
     enable = true;
     package = pkgs.nodejs_24;
+    settings = {
+      "//registry.npmjs.org/:_authToken" = "$NPM_TOKEN";
+    };
   };
 }
