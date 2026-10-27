@@ -10,6 +10,7 @@
     cmakeCurses
     docker-compose
     ffmpeg
+    fzf
     htop
     nmap
     protobuf

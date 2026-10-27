@@ -44,6 +44,7 @@ in
       ./neovim.nix
       ./packages.nix
       ./python.nix
+      ./zoxide.nix
     ]
     ++ lib.optionals (!headless) [
       ./fonts.nix
